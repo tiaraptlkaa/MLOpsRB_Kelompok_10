@@ -1,9 +1,10 @@
 # Rainfall / Cuaca Prediction 🌧️🌤️
 [![GitHub](https://img.shields.io/badge/GitHub-code-blue?style=flat&logo=github&logoColor=white&color=red)](https://github.com/prsdm/mlops-project)
 
-Prediksi kejadian hujan harian (label biner `Rain`) berdasarkan data cuaca harian yang mencakup variabel temperatur, kelembapan, penyinaran matahari, serta karakteristik angin. Variabel tanggal (`TANGGAL`) ditransformasikan menjadi fitur temporal (`Month` dan `Day`).  
-Project ini dirancang untuk mendemonstrasikan implementasi **end-to-end Machine Learning Operations (MLOps)**, mulai dari data ingestion, preprocessing, pelatihan model, deployment sebagai layanan API, hingga monitoring dan retraining model.
+Project ini bertujuan mengembangkan sistem prediksi kejadian hujan harian (label biner `Rain`) berdasarkan data cuaca harian yang mencakup variabel temperatur, kelembapan, penyinaran matahari, serta karakteristik angin. Informasi tanggal (`TANGGAL`) diproses menjadi fitur temporal (`Month` dan `Day`) untuk merepresentasikan pola musiman.  
+Pengembangan sistem difokuskan pada penerapan **Machine Learning Operations (MLOps)** secara end-to-end, yang meliputi proses pengambilan data, preprocessing, pelatihan model, deployment model sebagai layanan API, serta monitoring dan pembaruan model secara berkala.
 
+---
 
 ## ML Canvas
 
@@ -19,11 +20,8 @@ Project ini menyediakan sistem prediksi hujan harian berbasis data cuaca yang **
 Mengembangkan sistem **end-to-end MLOps** untuk memprediksi kejadian hujan harian (label biner: hujan / tidak hujan) menggunakan fitur cuaca harian, dengan fokus pada **workflow pengembangan model, deployment, monitoring drift, dan retraining**.  
 **Project ini berfokus pada pengembangan workflow MLOps dan tidak bertujuan untuk mengoptimalkan performa prediksi secara maksimal.**
 
----
-
 ### 4. Solution
 Solusi yang dikembangkan berupa pipeline MLOps yang mencakup proses ingestion data cuaca, preprocessing dan feature engineering, pelatihan model machine learning, pencatatan eksperimen menggunakan MLflow, deployment model sebagai REST API, serta monitoring data dan model drift.
-
 
 ### 5. Data
 Data yang digunakan merupakan data cuaca harian yang didapatkan dari website https://dataonline.bmkg.go.id yang digabungkan dari 1 Januari hingga 12 Desember 2025. Fitur yang digunakan antara lain temperatur, kelembapan, curah hujan, penyinaran matahari, dan angin. Label hujan diturunkan dari variabel curah hujan (`RR > 0`), sementara variabel `RR` tidak digunakan sebagai fitur saat training untuk menghindari data leakage.
@@ -137,3 +135,5 @@ python -m pytest   # atau make test
 Copyright © 2024, [Prasad Mahamulkar](https://github.com/prsdm).
 
 Released under the [Apache-2.0 license](LICENSE).
+
+---
