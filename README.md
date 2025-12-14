@@ -3,6 +3,51 @@
 
 Prediksi hujan (label biner `Rain`) dari fitur cuaca harian: temperatur, kelembapan, hujan (`RR`), penyinaran (`SS`), angin (`FF_X`, `FF_AVG`, `DDD_X`, `DDD_CAR`), serta tanggal (`TANGGAL` → `Month`/`Day`).
 
+## ML Canvas
+
+### 1. Background
+Curah hujan harian merupakan informasi penting dalam mendukung aktivitas masyarakat, pertanian, dan mitigasi risiko di wilayah Lampung Selatan. Namun, data cuaca bersifat dinamis dan dapat berubah seiring waktu, sehingga model prediksi yang tidak dikelola secara berkelanjutan berpotensi mengalami penurunan performa.
+
+---
+
+### 2. Value Proposition
+Project ini menyediakan sistem prediksi hujan harian berbasis data cuaca yang **otomatis, terpantau, dan dapat diperbarui**, sebagai contoh implementasi workflow *Machine Learning Operations (MLOps)* end-to-end.
+
+---
+
+### 3. Objective
+Mengembangkan sistem **end-to-end MLOps** untuk memprediksi kejadian hujan harian (label biner: hujan / tidak hujan) menggunakan fitur cuaca harian, dengan fokus pada **workflow pengembangan model, deployment, monitoring drift, dan retraining**.
+
+---
+
+### 4. Solution
+Solusi yang dikembangkan berupa pipeline MLOps yang mencakup proses ingestion data cuaca, preprocessing dan feature engineering, pelatihan model machine learning, pencatatan eksperimen menggunakan MLflow, deployment model sebagai REST API, serta monitoring data dan model drift.
+
+---
+
+### 5. Data
+Data yang digunakan merupakan data cuaca harian dengan fitur temperatur, kelembapan, curah hujan, penyinaran matahari, dan angin. Label hujan diturunkan dari variabel curah hujan (`RR > 0`), sementara variabel `RR` tidak digunakan sebagai fitur saat training untuk menghindari data leakage.
+
+---
+
+### 6. Metrics
+Evaluasi model dilakukan menggunakan metrik klasifikasi seperti **accuracy, precision, recall, dan F1-score**. Selain itu, sistem juga memonitor distribusi fitur input dan hasil prediksi untuk mendeteksi adanya *data drift*.
+
+---
+
+### 7. Evaluation
+Evaluasi dilakukan menggunakan data latih dan data uji terpisah. Kinerja model dianalisis secara periodik untuk mengidentifikasi potensi penurunan performa akibat perubahan pola cuaca.
+
+---
+
+### 8. Modeling
+Model utama yang digunakan adalah **RandomForestClassifier** sebagai baseline, dengan pertimbangan stabilitas dan kemudahan pemeliharaan dalam sistem MLOps. Model lain dapat ditambahkan sebagai pembanding melalui experiment tracking menggunakan MLflow.
+
+---
+
+### 9. Inference (Offline / Online)
+Model dideploy sebagai layanan **online inference** menggunakan FastAPI. Sistem menerima input data cuaca harian dan menghasilkan prediksi hujan (0 = tidak hujan, 1 = hujan) yang dapat diakses melalui REST API.
+
 
 ## Diagram
 Alur dari ingestion → cleaning → training → deployment:
