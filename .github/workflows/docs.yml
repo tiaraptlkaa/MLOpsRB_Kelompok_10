@@ -1,0 +1,21 @@
+name: docs 
+on:
+  push:
+    branches:
+      - master 
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install docs deps
+        run: pip install mkdocs mkdocs-material
+      - name: Build & deploy docs
+        run: mkdocs gh-deploy --force
