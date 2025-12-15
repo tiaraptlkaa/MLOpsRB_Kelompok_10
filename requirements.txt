@@ -13,3 +13,4 @@ PyYAML==6.0.1
 scikit-learn==1.5.1
 setuptools==70.3.0
 uvicorn==0.30.1
+streamlit==1.40.2
