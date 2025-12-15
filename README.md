@@ -54,6 +54,17 @@ Alur dari ingestion → cleaning → training → deployment:
 
 ---
 
+## Fitur Utama
+- **Data Versioning**: DVC untuk melacak dan mengelola versi data.
+- **Pipeline**: proses ingest/clean/train/predict terstruktur.
+- **Experiment Tracking**: MLflow untuk mencatat metrik dan artefak model.
+- **Model Serving**: FastAPI endpoint `/predict`.
+- **Containerization**: Docker untuk deployment yang reproducible.
+- **UI Demo (Opsional)**: Streamlit untuk mencoba prediksi secara interaktif.
+- **Monitoring (Batch/Offline)**: notebook monitoring + laporan drift dalam format JSON.
+
+---
+
 ## Persiapan Lingkungan
 Gunakan Python 3.12 (menghindari build `pyarrow` di 3.13):
 ```bash
@@ -115,6 +126,15 @@ docker build -t weather-fastapi .
 docker run -p 80:80 weather-fastapi
 ```
 
+---
+## Menjalankan UI Demo (Streamlit) — Opsional
+
+Streamlit digunakan sebagai **UI demo/presentasi** agar pengguna bisa mencoba prediksi tanpa Postman.  
+Deployment utama proyek ini tetap **FastAPI + Docker**.
+
+```bash
+streamlit run streamlit_app.py
+```
 ---
 
 ## Monitoring
