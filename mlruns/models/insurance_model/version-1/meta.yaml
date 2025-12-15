@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1765806556825
+current_stage: None
+description: null
+last_updated_timestamp: 1765806556825
+name: insurance_model
+run_id: 99488b43a9ce44f6ba34b8ed87093401
+run_link: null
+source: file:///workspaces/MLOpsRB_Kelompok_10/mlruns/390302602742118310/99488b43a9ce44f6ba34b8ed87093401/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///workspaces/MLOpsRB_Kelompok_10/mlruns/390302602742118310/99488b43a9ce44f6ba34b8ed87093401/artifacts/model
+user_id: null
+version: 1

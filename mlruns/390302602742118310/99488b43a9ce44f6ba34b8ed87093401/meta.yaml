@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/MLOpsRB_Kelompok_10/mlruns/390302602742118310/99488b43a9ce44f6ba34b8ed87093401/artifacts
+end_time: 1765806556828
+entry_point_name: ''
+experiment_id: '390302602742118310'
+lifecycle_stage: active
+run_id: 99488b43a9ce44f6ba34b8ed87093401
+run_name: amazing-ape-227
+run_uuid: 99488b43a9ce44f6ba34b8ed87093401
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1765806551877
+status: 3
+tags: []
+user_id: codespace

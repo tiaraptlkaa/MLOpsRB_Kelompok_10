@@ -1,0 +1,6 @@
+artifact_location: file:///workspaces/MLOpsRB_Kelompok_10/mlruns/390302602742118310
+creation_time: 1765806551773
+experiment_id: '390302602742118310'
+last_update_time: 1765806551773
+lifecycle_stage: active
+name: Model Training Experiment
