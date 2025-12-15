@@ -1,4 +1,4 @@
-# Rainfall / Cuaca Prediction 🌧️🌤️
+# Prediksi Hujan/Rainfall 🌧️🌤️
 [![GitHub](https://img.shields.io/badge/GitHub-code-blue?style=flat&logo=github&logoColor=white&color=red)](https://github.com/prsdm/mlops-project)
 
 Project ini bertujuan mengembangkan sistem prediksi kejadian hujan harian (label biner `Rain`) berdasarkan data cuaca harian yang mencakup variabel temperatur, kelembapan, penyinaran matahari, serta karakteristik angin. Informasi tanggal (`TANGGAL`) diproses menjadi fitur temporal (`Month` dan `Day`) untuk merepresentasikan pola musiman.  
