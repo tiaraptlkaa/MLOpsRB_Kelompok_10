@@ -73,10 +73,7 @@ make setup
 - Atau siapkan sendiri `data/train.csv` dan `data/test.csv` dengan skema mentah di atas.
 - DVC (opsional): remote GDrive `gdrive://1YbgrhKxIgpCDRrrMg72fK1Kwnj7q8cB4`. Untuk service account:
   ```bash
-  dvc remote modify --local myremote gdrive_use_service_account true
-  dvc remote modify --local myremote gdrive_service_account_json_file_path .dvc/service-account.json
   dvc pull   # tarik data
-  dvc push   # dorong cache
   ```
 
 ---

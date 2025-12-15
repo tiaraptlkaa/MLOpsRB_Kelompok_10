@@ -1,4 +1,4 @@
 [core]
     remote = myremote
 ['remote "myremote"']
-    url = /workspaces/mlops-project/.dvc/remote
+    url = ./.dvc/remote
