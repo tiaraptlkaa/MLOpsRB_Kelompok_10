@@ -1,69 +1,63 @@
 from datetime import datetime
-import streamlit as st
-import pandas as pd
+
 import joblib
+import pandas as pd
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
-st.set_page_config(page_title="Prediksi Cuaca", page_icon="🌦️")
+app = FastAPI()
 
-@st.cache_resource
-def load_model():
-    return joblib.load("models/model.pkl")
 
-model = load_model()
+class InputData(BaseModel):
+    TANGGAL: str = Field(..., description="Tanggal dalam format DD-MM-YYYY")
+    TN: float
+    TX: float
+    TAVG: float
+    RH_AVG: float
+    SS: float
+    FF_X: float
+    DDD_X: float
+    FF_AVG: float
+    DDD_CAR: str
 
-st.title("Prediksi Class (MLOps)")
-st.caption("Input data lalu klik Predict")
 
-# ---- Form input ----
-with st.form("predict_form"):
-    tanggal = st.text_input("TANGGAL (DD-MM-YYYY)", value="14-12-2025")
+# load model
+model = joblib.load("models/model.pkl")
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        TN = st.number_input("TN", value=0.0)
-        TX = st.number_input("TX", value=0.0)
-        TAVG = st.number_input("TAVG", value=0.0)
-    with col2:
-        RH_AVG = st.number_input("RH_AVG", value=0.0)
-        SS = st.number_input("SS", value=0.0)
-        FF_X = st.number_input("FF_X", value=0.0)
-    with col3:
-        DDD_X = st.number_input("DDD_X", value=0.0)
-        FF_AVG = st.number_input("FF_AVG", value=0.0)
-        DDD_CAR = st.text_input("DDD_CAR", value="N")
 
-    submitted = st.form_submit_button("Predict")
+@app.get("/")
+async def read_root():
+    return {"health_check": "OK", "model_version": 1}
 
-if submitted:
-    # validasi tanggal
+
+@app.post("/predict")
+async def predict(input_data: InputData):
+    # validate date format
     try:
-        dt = datetime.strptime(tanggal, "%d-%m-%Y")
+        dt = datetime.strptime(input_data.TANGGAL, "%d-%m-%Y")
     except ValueError:
-        st.error("TANGGAL harus format DD-MM-YYYY")
-        st.stop()
+        raise HTTPException(status_code=400, detail="TANGGAL harus format DD-MM-YYYY")
 
+    row = input_data.model_dump()
+    row["Month"] = dt.month
+    row["Day"] = dt.day
+
+    # align with training features
     features = {
-        "TN": TN,
-        "TX": TX,
-        "TAVG": TAVG,
-        "RH_AVG": RH_AVG,
-        "SS": SS,
-        "FF_X": FF_X,
-        "DDD_X": DDD_X,
-        "FF_AVG": FF_AVG,
-        "Month": dt.month,
-        "Day": dt.day,
-        "DDD_CAR": DDD_CAR,
+        "TN": row["TN"],
+        "TX": row["TX"],
+        "TAVG": row["TAVG"],
+        "RH_AVG": row["RH_AVG"],
+        "SS": row["SS"],
+        "FF_X": row["FF_X"],
+        "DDD_X": row["DDD_X"],
+        "FF_AVG": row["FF_AVG"],
+        "Month": row["Month"],
+        "Day": row["Day"],
+        "DDD_CAR": row["DDD_CAR"],
     }
 
     df = pd.DataFrame([features])
+    pred = model.predict(df)
 
-    try:
-        pred = model.predict(df)
-        st.success(f"Predicted class: {int(pred[0])}")
-        st.dataframe(df)
-    except Exception as e:
-        st.error(f"Gagal predict: {e}")
-
-
-
+    return {"predicted_class": int(pred[0])}
