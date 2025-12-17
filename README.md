@@ -127,7 +127,7 @@ docker run -p 80:80 weather-fastapi
 ```
 
 ---
-## Menjalankan UI Demo (Streamlit) — Opsional
+## Menjalankan UI Demo (Streamlit)
 
 Streamlit digunakan sebagai **UI demo/presentasi** agar pengguna bisa mencoba prediksi tanpa Postman.  
 Deployment utama proyek ini tetap **FastAPI + Docker**.
