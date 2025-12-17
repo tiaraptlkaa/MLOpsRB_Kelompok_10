@@ -3,7 +3,7 @@
 
 Project ini bertujuan mengembangkan sistem prediksi kejadian hujan harian (label biner `Rain`) berdasarkan data cuaca harian yang mencakup variabel temperatur, kelembapan, penyinaran matahari, serta karakteristik angin. Informasi tanggal (`TANGGAL`) diproses menjadi fitur temporal (`Month` dan `Day`) untuk merepresentasikan pola musiman.  
 Pengembangan sistem difokuskan pada penerapan **Machine Learning Operations (MLOps)** secara end-to-end, yang meliputi proses pengambilan data, preprocessing, pelatihan model, deployment model sebagai layanan API, serta monitoring dan pembaruan model secara berkala.
-
+ 
 ---
 
 ## ML Canvas
