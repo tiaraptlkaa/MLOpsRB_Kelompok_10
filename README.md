@@ -82,7 +82,7 @@ make setup
 ## Data
 - Pakai data contoh: `iklim.csv` → split manual ke `data/train.csv` & `data/test.csv` via `python dataset.py`.
 - Atau siapkan sendiri `data/train.csv` dan `data/test.csv` dengan skema mentah di atas.
-- DVC (opsional): remote GDrive `gdrive://1YbgrhKxIgpCDRrrMg72fK1Kwnj7q8cB4`. Untuk service account:
+- DVC : remote GDrive. Untuk service account:
   ```bash
   dvc pull   # tarik data
   ```
