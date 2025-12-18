@@ -44,7 +44,7 @@ Model dideploy sebagai layanan **online inference** menggunakan FastAPI. Sistem 
 
 ## Diagram
 Alur dari ingestion → cleaning → training → deployment:
-![Image](mlworkflow.jpg)
+![Image](WorkFlow2.jpg)
 
 ---
 
